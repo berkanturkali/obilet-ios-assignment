@@ -10,9 +10,22 @@
 		EB92A1BA2E2B534100D01F64 /* obilet-ios-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "obilet-ios-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		EB92A3002E2B5E3500D01F64 /* Exceptions for "obilet-ios-assignment" folder in "obilet-ios-assignment" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = EB92A1B92E2B534000D01F64 /* obilet-ios-assignment */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		EB92A1BC2E2B534100D01F64 /* obilet-ios-assignment */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				EB92A3002E2B5E3500D01F64 /* Exceptions for "obilet-ios-assignment" folder in "obilet-ios-assignment" target */,
+			);
 			path = "obilet-ios-assignment";
 			sourceTree = "<group>";
 		};
@@ -254,6 +267,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"obilet-ios-assignment/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "obilet-ios-assignment/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "\"\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -282,6 +297,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"obilet-ios-assignment/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "obilet-ios-assignment/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "\"\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
