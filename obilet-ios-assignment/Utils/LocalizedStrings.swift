@@ -31,6 +31,14 @@ struct LocalizedStrings {
         return localizedString(for: "tomorrow")
     }
     
+    static var findTheTicket: String {
+        return localizedString(for: "find_ticket")
+    }
+    
+    static var loremDummy: String {
+        return localizedString(for: "lorem_dummy")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

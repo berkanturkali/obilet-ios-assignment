@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "1 Nisan 2018 Pazar" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 Nisan 2018 Pazar"
+          }
+        }
+      }
     },
     "bus_tab_label" : {
       "extractionState" : "manual",
@@ -38,8 +45,44 @@
         }
       }
     },
+    "find_ticket" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find the Ticket"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bileti Bul"
+          }
+        }
+      }
+    },
     "Hello, world!" : {
-
+      "localizations" : {
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello, world!"
+          }
+        }
+      }
+    },
+    "lorem_dummy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+          }
+        }
+      },
+      "shouldTranslate" : false
     },
     "origin_label" : {
       "extractionState" : "manual",

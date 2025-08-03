@@ -17,8 +17,8 @@ struct TransportTabBar: View {
                            .font(.custom(Nunito.semiBold, size: 12))
                    }
                    .foregroundColor(selectedTab == tab ? OBiletColors.tabLayoutSelectedTextColor : OBiletColors.tabLayoutUnselectedTextColor)
-                   .frame(maxWidth: .infinity, minHeight: 40)
-                   .padding(.vertical, 4)
+                   .frame(maxWidth: .infinity, minHeight: 30)
+                   .padding(.vertical, 2)
                    .background(
                        selectedTab == tab
                            ? OBiletColors.primary
