@@ -29,4 +29,5 @@ struct OBiletColors {
     static let tertiaryText = Color("TertiaryText")
     static let tabLayoutSelectedTextColor = Color("TabLayoutSelectedTextColor")
     static let tabLayoutUnselectedTextColor = Color("TabLayoutUnselectedTextColor")
+    static let switchButtonBackground = Color("SwitchButtonBackground")
 }
