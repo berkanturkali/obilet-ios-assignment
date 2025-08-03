@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct SearchScreen: View {
+    
+    @State private var selectedTab: TransportTab = .bus
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -12,17 +14,17 @@ struct SearchScreen: View {
                             .fill(Color.red)
                             .frame(height: 150)
                         
-                        ZStack {
-                            TabView {
-                                
-                            }
-                            .tabViewStyle(.page(indexDisplayMode: .never))
-                        }
-                        .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
-                        .background(Color.white)
+                        TransportTabBar(
+                            selectedTab: $selectedTab
+                        )
+                        .animation(.easeInOut(duration: 0.4), value: selectedTab)
+                
                         .clipShape(RoundedRectangle(cornerRadius: 30))
-                        .shadow(radius: 5)
-                        .padding(.horizontal, 20)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 30)
+                                .stroke(OBiletColors.divider, lineWidth: 1)
+                            
+                        )
                         .position(x: geometry.size.width / 2, y: 150)
                         
                     }
