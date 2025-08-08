@@ -2,16 +2,11 @@
 
 import SwiftUI
 
-struct BusSection: View {
+struct FlightSection: View {
     var body: some View {
-        
-        @State var heightOfLocationViews: CGFloat = 0
-        
         ZStack {
-            OBiletColors.background
-                .ignoresSafeArea()
-            VStack {
-                
+            OBiletColors.background.ignoresSafeArea()
+            VStack(spacing: 8) {
                 ZStack {
                     VStack(spacing: 8) {
                         LocationView(
@@ -50,42 +45,13 @@ struct BusSection: View {
                     }
                     
                 }
-                
-                DateView()
-                
-                
-                Button(action: {
-                    // find the ticket
-                }) {
-                    Text(LocalizedStrings.findTheTicket)
-                        .foregroundColor(.white)
-                        .font(.custom(Nunito.bold, size: 16))
-                        .padding(.horizontal, 72)
-                        .padding(.vertical, 12)
-                        .background(
-                            RoundedRectangle(cornerRadius: 8)
-                                .fill(OBiletColors.button)
-                        )
-                }
-                .padding(.top, 24)
-                
-                Text(LocalizedStrings.loremDummy)
-                    .foregroundColor(OBiletColors.primaryTextWithHalfOpacity)
-                    .font(.custom(Nunito.medium, size: 16))
-                    .frame(maxWidth: .infinity)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment:.top)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
-        
-        
-        
+   
     }
 }
 
 #Preview {
-    BusSection()
-    
+    FlightSection()
 }

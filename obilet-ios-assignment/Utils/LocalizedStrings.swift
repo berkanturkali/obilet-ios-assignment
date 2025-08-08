@@ -39,6 +39,18 @@ struct LocalizedStrings {
         return localizedString(for: "lorem_dummy")
     }
     
+    static var departureLabel: String {
+        return localizedString(for: "departure_label")
+    }
+    
+    static var returnLabel: String {
+        return localizedString(for: "return_label")
+    }
+    
+    static var addReturnLabel: String {
+        return localizedString(for: "add_return_label")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

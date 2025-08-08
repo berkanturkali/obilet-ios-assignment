@@ -11,6 +11,26 @@
         }
       }
     },
+    "18" : {
+
+    },
+    "add_return_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Return"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donus Ekle"
+          }
+        }
+      }
+    },
     "bus_tab_label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -45,6 +65,24 @@
         }
       }
     },
+    "departure_label" : {
+      "comment" : "Gidis",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Departure"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Departure"
+          }
+        }
+      }
+    },
     "find_ticket" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -71,6 +109,9 @@
           }
         }
       }
+    },
+    "Kasim\nPazartesi" : {
+
     },
     "lorem_dummy" : {
       "extractionState" : "manual",
@@ -114,6 +155,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ucak Bileti"
+          }
+        }
+      }
+    },
+    "return_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Return"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donus"
           }
         }
       }
