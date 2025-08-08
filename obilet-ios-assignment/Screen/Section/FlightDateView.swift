@@ -83,7 +83,6 @@ struct FlightDateView: View {
                     .padding(.vertical, 8)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
-                
             }
             .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
             
