@@ -6,9 +6,9 @@ struct FlightSection: View {
     var body: some View {
         ZStack {
             OBiletColors.background.ignoresSafeArea()
-            VStack(spacing: 8) {
+            VStack(spacing: 16) {
                 ZStack {
-                    VStack(spacing: 8) {
+                    VStack(spacing: 4) {
                         LocationView(
                             title: LocalizedStrings.originLabel,
                             icon: "mappin.circle",
@@ -45,10 +45,36 @@ struct FlightSection: View {
                     }
                     
                 }
+                FlightDateView(onAddReturnButtonClick: {})
+                
+                PassengerSection(onAddPassengerTextClick: {})
+                
+                Button(action: {
+                    // find the ticket
+                }) {
+                    Text(LocalizedStrings.findTheTicket)
+                        .foregroundColor(.white)
+                        .font(.custom(Nunito.bold, size: 16))
+                        .padding(.horizontal, 72)
+                        .padding(.vertical, 12)
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(OBiletColors.button)
+                        )
+                }
+                .padding(.top, 24)
+                
+                Text(LocalizedStrings.loremDummy)
+                    .foregroundColor(OBiletColors.primaryTextWithHalfOpacity)
+                    .font(.custom(Nunito.medium, size: 16))
+                    .frame(maxWidth: .infinity)
+                    .multilineTextAlignment(.center)
+                    .padding()
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
-   
+        
     }
 }
 

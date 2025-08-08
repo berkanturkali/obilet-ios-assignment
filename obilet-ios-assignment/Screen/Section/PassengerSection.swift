@@ -36,12 +36,13 @@ struct PassengerSection: View {
                     }
                 
             }
-            
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 12)
+            .padding(.vertical)
         }
-        .frame(height: 100)
+        .fixedSize(horizontal: false, vertical: true)
         .padding(.horizontal)
+
     }
 }
 

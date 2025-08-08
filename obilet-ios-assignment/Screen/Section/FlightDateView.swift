@@ -30,12 +30,10 @@ struct FlightDateView: View {
                             .font(.custom(Nunito.bold, size: 18))
                             .foregroundColor(OBiletColors.primary)
                         
-                        Spacer()
-                        
                         
                         HStack(spacing: 4) {
                             Text("18")
-                                .font(.custom(Nunito.bold, size: 28))
+                                .font(.custom(Nunito.bold, size: 30))
                                 .foregroundColor(OBiletColors.primaryText)
                             VStack {
                                 Text("Kasim\nPazartesi")
@@ -45,7 +43,6 @@ struct FlightDateView: View {
                         }
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical, 12)
                 }
                 
                 
@@ -53,42 +50,46 @@ struct FlightDateView: View {
                     .frame(width: 1)
                     .frame(maxHeight: .infinity)
                     .background(Color.gray)
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.vertical, 6)
                 
                 
-                    HStack {
+                HStack {
+                    
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(LocalizedStrings.returnLabel)
+                            .font(.custom(Nunito.bold, size: 18))
+                            .foregroundColor(OBiletColors.primary)
                         
-                        VStack( alignment: .leading, spacing: 4) {
-                            Text(LocalizedStrings.returnLabel)
-                                .font(.custom(Nunito.bold, size: 18))
-                                .foregroundColor(OBiletColors.primary)
-                            
-                            Spacer()
-                            
-                            Text(LocalizedStrings.addReturnLabel)
-                                .font(.custom(Nunito.medium, size: 16))
-                                .foregroundColor(OBiletColors.primaryText)
-                            
-                        }
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         
-                        Image(systemName: "plus.circle")
-                            .foregroundColor(OBiletColors.secondaryIcon)
-                            .padding()
-                            .onTapGesture {
-                                onAddReturnButtonClick()
-                            }
+                        Text(LocalizedStrings.addReturnLabel)
+                            .font(.custom(Nunito.medium, size: 16))
+                            .foregroundColor(OBiletColors.primaryText)
+                        
+                        Spacer()
                         
                     }
-                    .padding(.vertical, 8)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    
+                    Image(systemName: "plus.circle")
+                        .foregroundColor(OBiletColors.secondaryIcon)
+                        .padding()
+                        .onTapGesture {
+                            onAddReturnButtonClick()
+                        }
+                    
+                }
+                .padding(.vertical, 8)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
             }
             .frame(minWidth: 0, maxWidth: .infinity, maxHeight: .infinity)
+            .padding(.vertical, 8)
             
         }
-        .frame(height: 100)
+        .fixedSize(horizontal: false, vertical: true)
         .padding(.horizontal)
+        
     }
 }
 
