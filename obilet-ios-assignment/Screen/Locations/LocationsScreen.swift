@@ -6,6 +6,9 @@ struct LocationsScreen: View {
     
     var title: String
     
+    var locations: [Location] = []
+    
+    @State private var showScrollToTop = false
     var body: some View {
         ZStack {
             OBiletColors.background.ignoresSafeArea()
@@ -14,16 +17,38 @@ struct LocationsScreen: View {
                 
                 Spacer()
                 
-                
-                
+                ZStack() {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(locations, id: \.self) { location in
+                                if let locationName = location.name {
+                                    LocationItem(location: locationName)
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+                    .ignoresSafeArea()
+                }
             }
         }
     }
 }
 
+private struct ScrollOffsetKey: PreferenceKey {
+    static var defaultValue: CGFloat = 0
+    
+    static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+        value = nextValue()
+    }
+}
+
 #Preview {
     LocationsScreen(
-        title: "Title"
+        title: "Title",
+        locations: (0...35).map({ i in
+            Location(name: "\(i)")
+        })
     )
 }
 
@@ -116,5 +141,24 @@ struct SearchBar: View {
             .animation(.easeInOut(duration: 0.2), value: text.isEmpty)
         }
         .padding(.bottom)
+    }
+}
+
+struct ScrollToTopButton: View {
+    
+    let onButtonClick: () -> Void
+    var body: some View {
+        Circle()
+            .fill(OBiletColors.scrollToTopButtonBackground)
+            .frame(width: 42, height: 42)
+            .overlay {
+                Image(systemName: "chevron.up")
+                    .font(.system(size: 16, weight: .bold))
+                    .foregroundColor(OBiletColors.primary)
+            }
+            .onTapGesture {
+                onButtonClick()
+            }
+        
     }
 }

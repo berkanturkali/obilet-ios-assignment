@@ -22,7 +22,6 @@ struct BusSection: View {
                 
                 DateView()
                 
-                
                 Button(action: {
                     // find the ticket
                 }) {

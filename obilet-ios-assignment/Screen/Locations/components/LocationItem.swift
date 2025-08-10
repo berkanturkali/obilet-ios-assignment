@@ -8,12 +8,13 @@ struct LocationItem: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 12)
+            RoundedRectangle(cornerRadius: 18)
                 .foregroundColor(OBiletColors.cardBackground)
                 .overlay(
                     RoundedRectangle(cornerRadius: 18)
                         .stroke(OBiletColors.cardStroke, lineWidth: 1)
                 )
+            
             
             HStack {
                 
@@ -31,10 +32,10 @@ struct LocationItem: View {
                 
                 Spacer()
                 
-                VStack(spacing: 8) {
+                VStack(spacing: 4) {
                     Image(systemName: "chevron.right")
                         .foregroundColor(OBiletColors.primary)
-                        .padding(10)
+                        .padding(6)
                         .background(
                             Circle().fill(OBiletColors.cardBackground)
                                 .overlay(
@@ -42,6 +43,7 @@ struct LocationItem: View {
                                         .stroke(OBiletColors.cardStroke, lineWidth: 1)
                                 )
                         )
+                        .font(.system(size: 12, weight: .semibold))
                     
                     Text(LocalizedStrings.seeOnMap)
                         .foregroundColor(OBiletColors.locationItemSeeOnMapText)
@@ -52,7 +54,8 @@ struct LocationItem: View {
                     //navigate to map with location
                 }
             }
-            .padding()
+            .padding(.vertical, 10)
+            .padding(.horizontal, 14)
         }
         .fixedSize(horizontal: false, vertical: true)
         .onTapGesture {

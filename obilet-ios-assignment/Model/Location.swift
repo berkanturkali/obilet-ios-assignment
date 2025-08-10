@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Location: Codable {
+struct Location: Codable, Hashable {
     var id: Int? = nil
     var name: String? = nil
     var latutide: Double? = nil
