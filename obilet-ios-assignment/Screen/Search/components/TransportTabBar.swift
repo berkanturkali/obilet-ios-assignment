@@ -30,6 +30,7 @@ struct TransportTabBar: View {
                    }
                }
            }
+           .fixedSize(horizontal: false, vertical: true)
            .background(OBiletColors.background)
            .clipShape(RoundedRectangle(cornerRadius: 10))
        }

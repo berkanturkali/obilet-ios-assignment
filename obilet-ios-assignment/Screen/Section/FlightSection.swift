@@ -22,7 +22,6 @@ struct FlightSection: View {
                         )
                     }
                     
-                    
                     HStack {
                         Spacer()
                         Button(action: {
