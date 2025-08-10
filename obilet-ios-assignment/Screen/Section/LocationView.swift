@@ -7,6 +7,9 @@ struct LocationView: View {
     let title: String
     let icon: String
     let selectedLocation: String
+    var textOffset: CGFloat = 0
+    var textOpacity: Double = 1
+    
     
     var body: some View {
         ZStack {
@@ -34,7 +37,9 @@ struct LocationView: View {
                     Text(selectedLocation)
                         .font(.custom(Nunito.medium, size: 14))
                         .foregroundColor(OBiletColors.primaryText)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)                    
+                        .offset(x: textOffset)
+                        .opacity(textOpacity)
                 }
                 
                 
