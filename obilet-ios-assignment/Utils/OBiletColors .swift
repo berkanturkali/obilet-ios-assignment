@@ -16,6 +16,7 @@ struct OBiletColors {
     static let iconPrimary = Color("IconPrimary")
     static let locationItemSeeOnMapButton = Color("LocationItemSeeOnMapButton")
     static let locationItemSeeOnMapButtonBorder = Color("LocationItemSeeOnMapButtonBorder")
+    static let locationItemSeeOnMapText = Color("LocationItemSeeOnMapButtonText")
     static let onPrimary = Color("OnPrimary")
     static let primary = Color("Primary")
     static let primaryText = Color("PrimaryText")

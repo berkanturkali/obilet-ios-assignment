@@ -179,6 +179,40 @@
         }
       }
     },
+    "search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ara…"
+          }
+        }
+      }
+    },
+    "see_on_map" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See on Map"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haritada Gor"
+          }
+        }
+      }
+    },
     "target_destination_label" : {
       "extractionState" : "manual",
       "localizations" : {

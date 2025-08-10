@@ -51,6 +51,14 @@ struct LocalizedStrings {
         return localizedString(for: "add_return_label")
     }
     
+    static var search: String {
+        return localizedString(for: "search")
+    }
+    
+    static var seeOnMap: String {
+        return localizedString(for: "see_on_map")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

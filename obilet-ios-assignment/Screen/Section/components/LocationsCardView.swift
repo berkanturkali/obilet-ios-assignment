@@ -13,6 +13,7 @@ struct LocationsCardView: View {
     @State private var destinationOffset: CGFloat = 0
     
     @State private var locationsOpacity: Double = 1
+    
     var body: some View {
         ZStack {
             VStack(spacing: 4) {
