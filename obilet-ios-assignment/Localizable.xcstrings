@@ -51,6 +51,40 @@
         }
       }
     },
+    "can_not_connected_to_host" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can not connected to the host: %@"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ adresine baglanilamadi."
+          }
+        }
+      }
+    },
+    "check_your_connection" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check your internet connection please."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lütfen internet bağlantınızı kontrol ediniz."
+          }
+        }
+      }
+    },
     "date_label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -127,6 +161,23 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "no_result_found" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No result found."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sonuc bulunamadı."
+          }
+        }
+      }
     },
     "origin_label" : {
       "extractionState" : "manual",
@@ -213,6 +264,23 @@
         }
       }
     },
+    "something_went_wrong" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something went wrong"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bir seyler ters gitti."
+          }
+        }
+      }
+    },
     "target_destination_label" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -226,6 +294,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nereye"
+          }
+        }
+      }
+    },
+    "timeout" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request has been timed out."
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Istek zaman asimina ugradi."
           }
         }
       }

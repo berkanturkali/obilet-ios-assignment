@@ -7,35 +7,37 @@ struct SearchScreen: View {
     @State private var selectedTab: TransportTab = .bus
     @State private var pushFromRight: Bool = false
     var body: some View {
-        ZStack {
-            OBiletColors.background.ignoresSafeArea()
-            VStack(spacing: 0) {
-                header
-                
-                Spacer()
-                
-                ZStack {
-                    sectionView(for: selectedTab)
-                }
-                .padding(.top, 40)
-                .id(selectedTab)
-                .transition(
-                    .asymmetric(
-                        insertion: pushFromRight
-                        ? .move(edge: .leading).combined(with: .opacity)
-                        : .move(edge: .trailing).combined(with: .opacity),
-                        removal: pushFromRight
-                        ? .move(edge: .trailing).combined(with: .opacity)
-                        : .move(edge: .leading).combined(with: .opacity)
-                        
+        NavigationStack {
+            ZStack {
+                OBiletColors.background.ignoresSafeArea()
+                VStack(spacing: 0) {
+                    header
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        sectionView(for: selectedTab)
+                    }
+                    .padding(.top, 40)
+                    .id(selectedTab)
+                    .transition(
+                        .asymmetric(
+                            insertion: pushFromRight
+                            ? .move(edge: .leading).combined(with: .opacity)
+                            : .move(edge: .trailing).combined(with: .opacity),
+                            removal: pushFromRight
+                            ? .move(edge: .trailing).combined(with: .opacity)
+                            : .move(edge: .leading).combined(with: .opacity)
+                            
+                        )
                     )
-                )
-                .animation(.easeInOut(duration: 0.20), value: selectedTab)
+                    .animation(.easeInOut(duration: 0.20), value: selectedTab)
+                }
             }
-        }
-        .ignoresSafeArea()
-        .onChange(of: selectedTab) { oldValue, newValue in
-            pushFromRight = (newValue == .plane)
+            .ignoresSafeArea()
+            .onChange(of: selectedTab) { oldValue, newValue in
+                pushFromRight = (newValue == .plane)
+            }
         }
     }
     

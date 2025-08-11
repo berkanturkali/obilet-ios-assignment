@@ -59,6 +59,26 @@ struct LocalizedStrings {
         return localizedString(for: "see_on_map")
     }
     
+    static var somethingWentWrong: String {
+        return localizedString(for: "something_went_wrong")
+    }
+    
+    static var noResultFound: String {
+        return localizedString(for: "no_result_found")
+    }
+    
+    static var timeout: String {
+        return localizedString(for: "timeout")
+    }
+    
+    static var checkYourConnection: String {
+        return localizedString(for: "check_your_connection")
+    }
+    
+    static var canNotConnectToHost: String {
+        return localizedString(for: "can_not_connected_to_host")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

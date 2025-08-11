@@ -17,7 +17,7 @@ struct LocationsScreen: View {
                 
                 Spacer()
                 
-                ZStack() {
+                ZStack {
                     ScrollView {
                         LazyVStack {
                             ForEach(locations, id: \.self) { location in
@@ -32,6 +32,7 @@ struct LocationsScreen: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
