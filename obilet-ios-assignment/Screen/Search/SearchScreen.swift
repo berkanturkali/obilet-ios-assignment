@@ -4,6 +4,8 @@ import SwiftUI
 
 struct SearchScreen: View {
     
+    @StateObject private var viewModel = SearchScreenViewModel()
+    
     @State private var selectedTab: TransportTab = .bus
     @State private var pushFromRight: Bool = false
     var body: some View {
@@ -33,6 +35,12 @@ struct SearchScreen: View {
                     )
                     .animation(.easeInOut(duration: 0.20), value: selectedTab)
                 }
+    
+                 if viewModel.isLoading {
+                     SearchScreenShimmer()
+                         .transition(.opacity)
+                         .zIndex(1)
+                 }
             }
             .ignoresSafeArea()
             .onChange(of: selectedTab) { oldValue, newValue in
@@ -69,7 +77,9 @@ struct SearchScreen: View {
     private func sectionView(for tab: TransportTab) -> some View {
         switch selectedTab {
         case .bus:
-            BusSection()
+            BusSection(
+                defaultOriginAndTargetDestinations: $viewModel.originAndTargetDestination
+            )
         case .plane:
             FlightSection()
         }

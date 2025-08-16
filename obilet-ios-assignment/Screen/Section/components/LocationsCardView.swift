@@ -14,6 +14,8 @@ struct LocationsCardView: View {
     
     @State private var locationsOpacity: Double = 1
     
+    let onSwipeButtonClick: (_ origin: String, _ target: String) -> Void
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -63,7 +65,10 @@ struct LocationsCardView: View {
                                 locationsOpacity = 1
                             }
                         }
-                    }                    }
+                        
+                        
+                    }
+                }
                 
             }
         }
@@ -72,6 +77,14 @@ struct LocationsCardView: View {
 
 #Preview {
     LocationsCardView(
-        origin: .constant("Istanbul Avrupa"), destination: .constant("Izmir")
-    )
+        origin:
+                .constant(
+                    "Istanbul Avrupa"
+                ),
+        destination: 
+                .constant(
+                    "Izmir"
+                )) { origin, target in
+                    
+                }
 }

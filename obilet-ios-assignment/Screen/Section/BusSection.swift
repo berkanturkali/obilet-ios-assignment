@@ -4,9 +4,9 @@ import SwiftUI
 
 struct BusSection: View {
     
-    @State var origin: String = "Istanbul Avrupa"
+    @Binding var defaultOriginAndTargetDestinations: OriginAndTargetDestionation
     
-    @State private var destination: String = "Izmir"
+    @StateObject var viewModel = BusSectionViewModel()
     
     var body: some View {
         NavigationStack {
@@ -16,9 +16,27 @@ struct BusSection: View {
                 VStack {
                     
                     LocationsCardView(
-                        origin: $origin,
-                        destination: $destination
-                    )
+                        origin: Binding(
+                            get: {
+                                viewModel.selectedOriginAndTargetDestination?.origin?.cityName ?? ""
+                            }, set: { newValue in
+                                if(viewModel.selectedOriginAndTargetDestination != nil) {
+                                    viewModel.selectedOriginAndTargetDestination!.origin?.cityName = newValue
+                                }
+                            }
+                        ),
+                        destination: Binding(
+                            get: {
+                                viewModel.selectedOriginAndTargetDestination?.target?.cityName ?? ""
+                            }, set: { newValue in
+                                if(viewModel.selectedOriginAndTargetDestination != nil) {
+                                    viewModel.selectedOriginAndTargetDestination!.target?.cityName = newValue
+                                }
+                            }
+                        )
+                    ) { origin, target in
+                        viewModel.swipeOriginAndTargetDestination()
+                    }
                     
                     DateView()
                     
@@ -48,13 +66,23 @@ struct BusSection: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment:.top)
             }
         }
-        
-        
-        
+        .onAppear {
+            if(viewModel.selectedOriginAndTargetDestination?.origin == nil) {
+                viewModel.selectedOriginAndTargetDestination = defaultOriginAndTargetDestinations
+            }
+        }
+        .onChange(of: defaultOriginAndTargetDestinations) { oldValue, newValue in
+            print("new value is \(String(describing: newValue))")
+              viewModel.selectedOriginAndTargetDestination = newValue
+          }
     }
 }
 
 #Preview {
-    BusSection()
+    BusSection(
+        defaultOriginAndTargetDestinations: .constant(
+            OriginAndTargetDestionation()
+        )
+    )
     
 }

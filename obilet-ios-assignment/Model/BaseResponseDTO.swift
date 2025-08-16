@@ -4,7 +4,7 @@ import Foundation
 
 struct BaseResponseDTO<T: Codable>: Codable {
     
-    let status: Status?
+    let status: String?
     let data: T?
     let message: String?
     let userMessage: String?
@@ -19,8 +19,7 @@ struct BaseResponseDTO<T: Codable>: Codable {
         case apiRequestId = "api-request-id"
         case controller
     }
+    
+    var isSuccess: Bool { status?.lowercased() == "success" }
 }
 
-enum Status: String, Codable {
-    case success
-}

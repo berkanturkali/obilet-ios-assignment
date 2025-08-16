@@ -6,7 +6,7 @@ import SwiftUI
 struct obilet_ios_assignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

@@ -12,7 +12,7 @@ struct NetworkManager {
         to url: String,
         method: HttpMethod,
         body: T? = nil,
-        responseType: BaseResponseDTO<U>.Type
+        responseType: BaseResponseDTO<U>.Type = BaseResponseDTO<U>.self
     ) async throws -> Resource<U> {
         
         guard let url = URL(string: url) else {
@@ -26,6 +26,8 @@ struct NetworkManager {
             
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
             
+            request.setValue(AuthHeader.tokenWithPrefix, forHTTPHeaderField: AuthHeader.name)
+            
             if let body = body {
                 let jsonBody = try JSONEncoder().encode(body)
                 request.httpBody = jsonBody
@@ -38,15 +40,15 @@ struct NetworkManager {
                 throw NetworkError.unknownError(statusCode: statusCode, description: LocalizedStrings.somethingWentWrong)
             }
             
-            print(data)
-            
             guard !data.isEmpty else {
                 throw NetworkError.unknownError(statusCode: httpResponse.statusCode, description: LocalizedStrings.noResultFound)
             }
             
             let decodedResponse = try JSONDecoder().decode(responseType, from: data)
             
-            guard decodedResponse.status == .success else {
+            print("decoded response = \(decodedResponse)")
+            
+            guard decodedResponse.isSuccess else {
                 throw NetworkError.unknownError(statusCode: httpResponse.statusCode, description: LocalizedStrings.somethingWentWrong)
             }
             
@@ -58,7 +60,24 @@ struct NetworkManager {
             
             
         } catch let error {
+            print(error.localizedDescription)
             return Resource.Error(error: handleError(error, url: url.absoluteString))
+        }
+    }
+    
+    func handleNetworkError(_ error: NetworkError) -> String {
+        switch error {
+        case .badURL(let message),
+                .requestFailed(let message),
+                .notConnectedToInternet(let message),
+                .timeOut(let message),
+                .cannotConnectToHost(let message):
+            return message
+        case .decodingError(let underlyingError):
+            return underlyingError.localizedDescription
+        case .httpError(_, let localizedDescription),
+                .unknownError(_, let localizedDescription):
+            return localizedDescription
         }
     }
     
