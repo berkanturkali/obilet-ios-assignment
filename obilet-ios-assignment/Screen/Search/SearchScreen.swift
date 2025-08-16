@@ -78,10 +78,13 @@ struct SearchScreen: View {
         switch selectedTab {
         case .bus:
             BusSection(
-                defaultOriginAndTargetDestinations: $viewModel.originAndTargetDestination
+                defaultOriginAndTargetDestinations: $viewModel.originAndTargetDestination,
+                locations: viewModel.locations
             )
         case .plane:
-            FlightSection()
+            FlightSection(
+                locations: viewModel.locations
+            )
         }
     }
 }

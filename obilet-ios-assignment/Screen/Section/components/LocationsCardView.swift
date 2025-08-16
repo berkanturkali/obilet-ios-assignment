@@ -14,13 +14,15 @@ struct LocationsCardView: View {
     
     @State private var locationsOpacity: Double = 1
     
+    let locations: [BusLocationDTO]
+
     let onSwipeButtonClick: (_ origin: String, _ target: String) -> Void
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack(spacing: 4) {
-                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.originLabel)) {
+                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.originLabel, direction: .origin, locations: locations)) {
                         LocationView(
                             title: LocalizedStrings.originLabel,
                             icon: "mappin.circle",
@@ -30,7 +32,7 @@ struct LocationsCardView: View {
                         )
                     }
                     
-                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.targetDestinationLabel)) {
+                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.targetDestinationLabel, direction: .target, locations: locations)) {
                         
                         LocationView(
                             title: LocalizedStrings.targetDestinationLabel,
@@ -84,7 +86,9 @@ struct LocationsCardView: View {
         destination: 
                 .constant(
                     "Izmir"
-                )) { origin, target in
+                ),
+        locations: []
+    ) { origin, target in
                     
                 }
 }

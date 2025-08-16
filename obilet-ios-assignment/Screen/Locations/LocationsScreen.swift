@@ -4,23 +4,33 @@ import SwiftUI
 
 struct LocationsScreen: View {
     
+    @StateObject private var viewModel: LocationsScreenViewModel
+    
     var title: String
     
-    var locations: [Location] = []
+    var direction: LocationDirection
+    
+    init(title: String, direction: LocationDirection, locations: [BusLocationDTO]) {
+        self.title = title
+        self.direction = direction
+        _viewModel = StateObject(wrappedValue: LocationsScreenViewModel(initialLocations: locations))
+    }
     
     @State private var showScrollToTop = false
     var body: some View {
         ZStack {
             OBiletColors.background.ignoresSafeArea()
             VStack {
-                TopBar(title: title)
+                TopBar(title: title, query: $viewModel.searchQuery) { query in
+                    viewModel.searchQuery = query
+                }
                 
                 Spacer()
                 
                 ZStack {
                     ScrollView {
                         LazyVStack {
-                            ForEach(locations, id: \.self) { location in
+                            ForEach(viewModel.locations, id: \.id) { location in
                                 if let locationName = location.name {
                                     LocationItem(location: locationName)
                                 }
@@ -47,9 +57,8 @@ private struct ScrollOffsetKey: PreferenceKey {
 #Preview {
     LocationsScreen(
         title: "Title",
-        locations: (0...35).map({ i in
-            Location(name: "\(i)")
-        })
+        direction: LocationDirection.origin,
+        locations: []
     )
 }
 
@@ -59,7 +68,10 @@ struct TopBar: View {
     
     var title: String
     
-    @State var query: String = ""
+    @Binding var query: String
+    
+    let onQueryChange: (String) -> Void
+    
     var body: some View {
         ZStack {
             OBiletColors.primary.ignoresSafeArea()

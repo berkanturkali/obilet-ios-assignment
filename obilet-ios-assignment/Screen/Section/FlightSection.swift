@@ -8,6 +8,8 @@ struct FlightSection: View {
     
     @State private var destination: String = "Izmir"
     
+    let locations: [BusLocationDTO]
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -16,7 +18,8 @@ struct FlightSection: View {
                     
                     LocationsCardView(
                         origin: $origin,
-                        destination: $destination
+                        destination: $destination,
+                        locations: locations
                     ) { origin, target in
                             
                     }
@@ -56,5 +59,7 @@ struct FlightSection: View {
 }
 
 #Preview {
-    FlightSection()
+    FlightSection(
+        locations: []
+    )
 }

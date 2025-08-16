@@ -8,6 +8,8 @@ struct BusSection: View {
     
     @StateObject var viewModel = BusSectionViewModel()
     
+    var locations: [BusLocationDTO] = []
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -33,10 +35,12 @@ struct BusSection: View {
                                     viewModel.selectedOriginAndTargetDestination!.target?.cityName = newValue
                                 }
                             }
-                        )
-                    ) { origin, target in
-                        viewModel.swipeOriginAndTargetDestination()
-                    }
+                        ),
+                        locations: locations,
+                        onSwipeButtonClick: { origin, target in
+                            viewModel.swipeOriginAndTargetDestination()
+                        }
+                    )
                     
                     DateView()
                     
@@ -73,8 +77,8 @@ struct BusSection: View {
         }
         .onChange(of: defaultOriginAndTargetDestinations) { oldValue, newValue in
             print("new value is \(String(describing: newValue))")
-              viewModel.selectedOriginAndTargetDestination = newValue
-          }
+            viewModel.selectedOriginAndTargetDestination = newValue
+        }
     }
 }
 

@@ -4,7 +4,7 @@ import Foundation
 
 import Foundation
 
-struct BusLocationDTO: Codable, Equatable {
+struct BusLocationDTO: Codable, Equatable, Identifiable {
     let id: Int?
     let parentId: Int?
     let type: String?
