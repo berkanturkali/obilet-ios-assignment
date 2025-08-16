@@ -15,14 +15,24 @@ struct LocationsCardView: View {
     @State private var locationsOpacity: Double = 1
     
     let locations: [BusLocationDTO]
-
+    
     let onSwipeButtonClick: (_ origin: String, _ target: String) -> Void
+    
+    let onLocationSelected:(BusLocationDTO, LocationDirection) -> Void
     
     var body: some View {
         NavigationStack {
             ZStack {
                 VStack(spacing: 4) {
-                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.originLabel, direction: .origin, locations: locations)) {
+                    NavigationLink(
+                        destination: LocationsScreen(
+                            title: LocalizedStrings.originLabel,
+                            direction: .origin,
+                            locations: locations,
+                            onLocationSelected: { selectedLocation in
+                                onLocationSelected(selectedLocation, .origin)
+                            })
+                    ) {
                         LocationView(
                             title: LocalizedStrings.originLabel,
                             icon: "mappin.circle",
@@ -32,7 +42,15 @@ struct LocationsCardView: View {
                         )
                     }
                     
-                    NavigationLink(destination: LocationsScreen(title: LocalizedStrings.targetDestinationLabel, direction: .target, locations: locations)) {
+                    NavigationLink(
+                        destination: LocationsScreen(
+                            title: LocalizedStrings.targetDestinationLabel,
+                            direction: .target,
+                            locations: locations,
+                            onLocationSelected: { selectedLocation in
+                                onLocationSelected(selectedLocation, .target)
+                            })
+                    ) {
                         
                         LocationView(
                             title: LocalizedStrings.targetDestinationLabel,
@@ -83,12 +101,14 @@ struct LocationsCardView: View {
                 .constant(
                     "Istanbul Avrupa"
                 ),
-        destination: 
+        destination:
                 .constant(
                     "Izmir"
                 ),
-        locations: []
-    ) { origin, target in
-                    
-                }
+        locations: [],
+        onSwipeButtonClick: { origin, target in
+        
+        }) { _, _ in
+            
+        }
 }

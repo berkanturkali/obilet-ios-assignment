@@ -4,7 +4,12 @@ import SwiftUI
 
 struct LocationItem: View {
     
-    var location: String
+    var locationName: String
+    
+    var latitude: Double?
+    var longitude: Double?
+    
+    let onLocationItemClick: (String) -> Void
     
     var body: some View {
         ZStack {
@@ -25,7 +30,7 @@ struct LocationItem: View {
                     .foregroundColor(OBiletColors.iconPrimary)
                     .font(.system(size: 24))
                     
-                    Text(location)
+                    Text(locationName)
                         .foregroundColor(OBiletColors.primary)
                         .font(.custom(Nunito.bold, size: 18))
                 }
@@ -59,13 +64,15 @@ struct LocationItem: View {
         }
         .fixedSize(horizontal: false, vertical: true)
         .onTapGesture {
-            //set location
+            onLocationItemClick(locationName)
         }
     }
 }
 
 #Preview {
     LocationItem(
-        location: "Location"
-    )
+        locationName: "Location",
+        latitude: nil,
+        longitude: nil
+    ) { _ in }
 }

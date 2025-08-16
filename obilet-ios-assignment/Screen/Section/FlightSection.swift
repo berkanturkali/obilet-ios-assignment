@@ -19,9 +19,11 @@ struct FlightSection: View {
                     LocationsCardView(
                         origin: $origin,
                         destination: $destination,
-                        locations: locations
-                    ) { origin, target in
-                            
+                        locations: locations,
+                        onSwipeButtonClick: { origin, target in
+                        }
+                    ) { selectedLocation, direction in
+                        
                     }
                     
                     FlightDateView(onAddReturnButtonClick: {})

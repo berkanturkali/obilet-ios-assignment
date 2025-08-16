@@ -6,9 +6,9 @@ struct BusSection: View {
     
     @Binding var defaultOriginAndTargetDestinations: OriginAndTargetDestionation
     
-    @StateObject var viewModel = BusSectionViewModel()
-    
     var locations: [BusLocationDTO] = []
+    
+    @ObservedObject var viewModel: BusSectionViewModel
     
     var body: some View {
         NavigationStack {
@@ -39,8 +39,14 @@ struct BusSection: View {
                         locations: locations,
                         onSwipeButtonClick: { origin, target in
                             viewModel.swipeOriginAndTargetDestination()
+                        }) {
+                            selectedLocation,
+                            direction in
+                            viewModel.selectedOriginAndTargetDestination = OriginAndTargetDestionation(
+                                origin: direction == .origin && viewModel.selectedOriginAndTargetDestination?.target?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.origin,
+                                target: direction == .target && viewModel.selectedOriginAndTargetDestination?.origin?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.target
+                            )
                         }
-                    )
                     
                     DateView()
                     
@@ -82,11 +88,11 @@ struct BusSection: View {
     }
 }
 
-#Preview {
-    BusSection(
-        defaultOriginAndTargetDestinations: .constant(
-            OriginAndTargetDestionation()
-        )
-    )
-    
-}
+//#Preview {
+//    BusSection(
+//        defaultOriginAndTargetDestinations: .constant(
+//            OriginAndTargetDestionation()
+//        )
+//    )
+//    
+//}
