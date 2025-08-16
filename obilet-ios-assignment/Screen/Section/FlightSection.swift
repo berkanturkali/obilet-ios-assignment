@@ -4,11 +4,12 @@ import SwiftUI
 
 struct FlightSection: View {
     
-    @State var origin: String = "Istanbul Avrupa"
+    @Binding var defaultOriginAndTargetDestinations: OriginAndTargetDestionation
     
-    @State private var destination: String = "Izmir"
     
     let locations: [BusLocationDTO]
+    
+    @ObservedObject var viewModel: FlightSectionViewModel
     
     var body: some View {
         NavigationStack {
@@ -17,13 +18,34 @@ struct FlightSection: View {
                 VStack(spacing: 16) {
                     
                     LocationsCardView(
-                        origin: $origin,
-                        destination: $destination,
+                        origin: Binding(
+                            get: {
+                                viewModel.selectedOriginAndTargetDestination?.origin?.cityName ?? ""
+                            }, set: { newValue in
+                                if(viewModel.selectedOriginAndTargetDestination != nil) {
+                                    viewModel.selectedOriginAndTargetDestination!.origin?.cityName = newValue
+                                }
+                            }
+                        ),
+                        destination: Binding(
+                            get: {
+                                viewModel.selectedOriginAndTargetDestination?.target?.cityName ?? ""
+                            }, set: { newValue in
+                                if(viewModel.selectedOriginAndTargetDestination != nil) {
+                                    viewModel.selectedOriginAndTargetDestination!.target?.cityName = newValue
+                                }
+                            }
+                        ),
                         locations: locations,
                         onSwipeButtonClick: { origin, target in
                         }
-                    ) { selectedLocation, direction in
-                        
+                    ){
+                        selectedLocation,
+                        direction in
+                        viewModel.selectedOriginAndTargetDestination = OriginAndTargetDestionation(
+                            origin: direction == .origin && viewModel.selectedOriginAndTargetDestination?.target?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.origin,
+                            target: direction == .target && viewModel.selectedOriginAndTargetDestination?.origin?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.target
+                        )
                     }
                     
                     FlightDateView(onAddReturnButtonClick: {})
@@ -57,11 +79,20 @@ struct FlightSection: View {
             }
             
         }
+        .onAppear {
+            if(viewModel.selectedOriginAndTargetDestination?.origin == nil) {
+                viewModel.selectedOriginAndTargetDestination = defaultOriginAndTargetDestinations
+            }
+        }
+        .onChange(of: defaultOriginAndTargetDestinations) { oldValue, newValue in
+            print("new value is \(String(describing: newValue))")
+            viewModel.selectedOriginAndTargetDestination = newValue
+        }
     }
 }
-
-#Preview {
-    FlightSection(
-        locations: []
-    )
-}
+//
+//#Preview {
+//    FlightSection(
+//        locations: []
+//    )
+//}

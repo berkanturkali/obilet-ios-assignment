@@ -8,6 +8,8 @@ struct SearchScreen: View {
     
     @StateObject private var busSectionViewModel = BusSectionViewModel()
     
+    @StateObject private var flightSectionViewModel = FlightSectionViewModel()
+    
     @State private var selectedTab: TransportTab = .bus
     @State private var pushFromRight: Bool = false
     var body: some View {
@@ -86,7 +88,9 @@ struct SearchScreen: View {
             )
         case .plane:
             FlightSection(
-                locations: viewModel.locations
+                defaultOriginAndTargetDestinations: $viewModel.originAndTargetDestination,
+                locations: viewModel.locations,
+                viewModel: flightSectionViewModel    
             )
         }
     }
