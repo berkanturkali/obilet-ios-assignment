@@ -15,65 +15,9 @@ struct BusSection: View {
             ZStack {
                 OBiletColors.background
                     .ignoresSafeArea()
-                VStack {
-                    
-                    LocationsCardView(
-                        origin: Binding(
-                            get: {
-                                viewModel.selectedOriginAndTargetDestination?.origin?.cityName ?? ""
-                            }, set: { newValue in
-                                if(viewModel.selectedOriginAndTargetDestination != nil) {
-                                    viewModel.selectedOriginAndTargetDestination!.origin?.cityName = newValue
-                                }
-                            }
-                        ),
-                        destination: Binding(
-                            get: {
-                                viewModel.selectedOriginAndTargetDestination?.target?.cityName ?? ""
-                            }, set: { newValue in
-                                if(viewModel.selectedOriginAndTargetDestination != nil) {
-                                    viewModel.selectedOriginAndTargetDestination!.target?.cityName = newValue
-                                }
-                            }
-                        ),
-                        locations: locations,
-                        onSwipeButtonClick: { origin, target in
-                            viewModel.swipeOriginAndTargetDestination()
-                        }) {
-                            selectedLocation,
-                            direction in
-                            viewModel.selectedOriginAndTargetDestination = OriginAndTargetDestionation(
-                                origin: direction == .origin && viewModel.selectedOriginAndTargetDestination?.target?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.origin,
-                                target: direction == .target && viewModel.selectedOriginAndTargetDestination?.origin?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.target
-                            )
-                        }
-                    
-                    DateView()
-                    
-                    Button(action: {
-                        // find the ticket
-                    }) {
-                        Text(LocalizedStrings.findTheTicket)
-                            .foregroundColor(.white)
-                            .font(.custom(Nunito.bold, size: 16))
-                            .padding(.horizontal, 72)
-                            .padding(.vertical, 12)
-                            .background(
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(OBiletColors.button)
-                            )
-                    }
-                    .padding(.top, 24)
-                    
-                    Text(LocalizedStrings.loremDummy)
-                        .foregroundColor(OBiletColors.primaryTextWithHalfOpacity)
-                        .font(.custom(Nunito.medium, size: 16))
-                        .frame(maxWidth: .infinity)
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
-                }
-                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment:.top)
+                
+                busSectionContent(locations: locations)
+                
             }
         }
         .onAppear {
@@ -86,13 +30,76 @@ struct BusSection: View {
             viewModel.selectedOriginAndTargetDestination = newValue
         }
     }
+    
+    
+    private func busSectionContent(locations: [BusLocationDTO]) -> some View {
+        VStack {
+            
+            LocationsCardView(
+                origin: Binding(
+                    get: {
+                        viewModel.selectedOriginAndTargetDestination?.origin?.cityName ?? ""
+                    }, set: { newValue in
+                        if(viewModel.selectedOriginAndTargetDestination != nil) {
+                            viewModel.selectedOriginAndTargetDestination!.origin?.cityName = newValue
+                        }
+                    }
+                ),
+                destination: Binding(
+                    get: {
+                        viewModel.selectedOriginAndTargetDestination?.target?.cityName ?? ""
+                    }, set: { newValue in
+                        if(viewModel.selectedOriginAndTargetDestination != nil) {
+                            viewModel.selectedOriginAndTargetDestination!.target?.cityName = newValue
+                        }
+                    }
+                ),
+                locations: locations,
+                onSwipeButtonClick: { origin, target in
+                    viewModel.swipeOriginAndTargetDestination()
+                }) {
+                    selectedLocation,
+                    direction in
+                    viewModel.selectedOriginAndTargetDestination = OriginAndTargetDestionation(
+                        origin: direction == .origin && viewModel.selectedOriginAndTargetDestination?.target?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.origin,
+                        target: direction == .target && viewModel.selectedOriginAndTargetDestination?.origin?.name != selectedLocation.name ? selectedLocation : viewModel.selectedOriginAndTargetDestination?.target
+                    )
+                }
+            
+            DateView()
+            
+            Button(action: {
+                // find the ticket
+            }) {
+                Text(LocalizedStrings.findTheTicket)
+                    .foregroundColor(.white)
+                    .font(.custom(Nunito.bold, size: 16))
+                    .padding(.horizontal, 72)
+                    .padding(.vertical, 12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(OBiletColors.button)
+                    )
+            }
+            .padding(.top, 24)
+            
+            Text(LocalizedStrings.loremDummy)
+                .foregroundColor(OBiletColors.primaryTextWithHalfOpacity)
+                .font(.custom(Nunito.medium, size: 16))
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment:.top)
+    }
 }
 
-//#Preview {
-//    BusSection(
-//        defaultOriginAndTargetDestinations: .constant(
-//            OriginAndTargetDestionation()
-//        )
-//    )
-//    
-//}
+#Preview {
+    BusSection(
+        defaultOriginAndTargetDestinations: .constant(
+            OriginAndTargetDestionation()
+        ),
+        viewModel: BusSectionViewModel()
+    )
+}
