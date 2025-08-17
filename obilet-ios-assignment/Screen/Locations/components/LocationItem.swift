@@ -1,6 +1,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct LocationItem: View {
     
@@ -56,7 +57,15 @@ struct LocationItem: View {
                     
                 }
                 .onTapGesture {
-                    //navigate to map with location
+                    if let latitude = latitude, let longitude = longitude {
+                        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                        let placemark = MKPlacemark(coordinate: coordinate)
+                        let mapItem = MKMapItem(placemark: placemark)
+                        
+                        mapItem.name = locationName
+                        mapItem
+                            .openInMaps()
+                    }
                 }
             }
             .padding(.vertical, 10)
