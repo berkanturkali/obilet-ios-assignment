@@ -16,10 +16,22 @@ struct DateView: View {
     
     var startOffset: CGFloat {
         spaceBetweenIconAndDate + sizeOfIcon
-    }   
+    }
     
+    @Binding var selectedDay: Day
     
-    @State var selectedDay: Day = Day.other
+    @Binding var selectedDate: Date
+    
+    @Binding var displayDate: String
+    
+    @State private var isDatePickerPresented = false
+    
+    private var formattedLocalizedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM yyyy"
+        formatter.locale = Locale.current
+        return formatter.string(from: selectedDate)
+    }
     
     var body: some View {
         ZStack {
@@ -43,14 +55,14 @@ struct DateView: View {
                         .font(.system(size: 20))
                     
                     
-                    Text("1 Nisan 2018 Pazar")
+                    Text(displayDate)
                         .font(.custom(Nunito.medium, size: 14))
                         .foregroundColor(OBiletColors.primaryText)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     
                 }
                 .onTapGesture {
-                    //show date picker
+                    isDatePickerPresented.toggle()
                 }
                 
                 Divider()
@@ -93,6 +105,41 @@ struct DateView: View {
         
         .frame(height: 150)
         .padding(.horizontal)
+        .sheet(isPresented: $isDatePickerPresented) {
+            ZStack {
+                OBiletColors.background.ignoresSafeArea()
+                VStack {
+                    Text(LocalizedStrings.selectDate)
+                        .font(.custom(Nunito.bold, size: 18))
+                        .foregroundColor(OBiletColors.primary)
+                        .padding(.top)
+                    DatePicker(
+                        LocalizedStrings.selectDate,
+                        selection: $selectedDate,
+                        in: Date()...,
+                        displayedComponents: [.date]
+                    )
+                    .datePickerStyle(.graphical)
+                    .accentColor(OBiletColors.primary)
+                    
+                    Button(LocalizedStrings.done) {
+                        displayDate = formattedLocalizedDate
+                        isDatePickerPresented = false
+                    }
+                    .font(.custom(Nunito.bold, size: 16))
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 72)
+                    .padding(.vertical, 12)
+                    .background(
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(OBiletColors.button)
+                    )
+                }
+            }
+        }
+        .onAppear {
+            displayDate = formattedLocalizedDate
+        }
         
         
     }
@@ -101,5 +148,18 @@ struct DateView: View {
 }
 
 #Preview {
-    DateView()
+    DateView(
+        selectedDay: 
+                .constant(
+                    .other
+                ),
+        selectedDate: 
+                .constant(
+                    Date()
+                ),
+        displayDate: 
+                .constant(
+                    ""
+                )
+    )
 }

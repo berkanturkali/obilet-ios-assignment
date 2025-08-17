@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "1 Nisan 2018 Pazar" : {
+      "extractionState" : "stale",
       "localizations" : {
         "tr" : {
           "stringUnit" : {
@@ -116,6 +117,23 @@
           "stringUnit" : {
             "state" : "needs_review",
             "value" : "Departure"
+          }
+        }
+      }
+    },
+    "done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tamam"
           }
         }
       }
@@ -261,6 +279,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Haritada Gor"
+          }
+        }
+      }
+    },
+    "select_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a Date"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tarih Secin"
           }
         }
       }

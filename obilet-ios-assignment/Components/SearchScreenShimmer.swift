@@ -73,7 +73,7 @@ struct SearchScreenShimmer: View {
                 
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.horizontal)
-                .padding(.top, -16)
+                .padding(.top)
             }
             
             

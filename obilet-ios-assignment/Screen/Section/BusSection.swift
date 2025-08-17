@@ -66,7 +66,11 @@ struct BusSection: View {
                     )
                 }
             
-            DateView()
+            DateView(
+                selectedDay: $viewModel.selectedDay,
+                selectedDate: $viewModel.selectedDate,
+                displayDate: $viewModel.displayDate
+            )
             
             Button(action: {
                 // find the ticket

@@ -79,6 +79,14 @@ struct LocalizedStrings {
         return localizedString(for: "can_not_connected_to_host")
     }
     
+    static var selectDate: String {
+        return localizedString(for: "select_date")
+    }
+    
+    static var done: String {
+        return localizedString(for: "done")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }
