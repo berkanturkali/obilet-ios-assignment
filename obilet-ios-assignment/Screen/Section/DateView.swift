@@ -76,6 +76,12 @@ struct DateView: View {
                                 selectedDay = .other
                             } else {
                                 selectedDay = day
+                                if(selectedDay == .today) {
+                                    selectedDate = Date()
+                                } else {
+                                    selectedDate = Calendar.current.date(byAdding: .day, value: 1, to: Date()) ?? Date()
+                                }
+                                displayDate = formattedLocalizedDate
                             }
                         }) {
                             Text(day.title)

@@ -1,6 +1,15 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "-" : {
+
+    },
+    "%lld" : {
+
+    },
+    "+" : {
+
+    },
     "1 Nisan 2018 Pazar" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -31,6 +40,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Donus Ekle"
+          }
+        }
+      }
+    },
+    "adult" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Adult"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yetiskin"
+          }
+        }
+      }
+    },
+    "baby_passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baby (0-2 Ages)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bebek (0-2 Yas)"
           }
         }
       }
@@ -82,6 +125,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lütfen internet bağlantınızı kontrol ediniz."
+          }
+        }
+      }
+    },
+    "child_passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Child (2-11 Ages)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cocuk (2-11 Yas)"
           }
         }
       }
@@ -138,6 +198,23 @@
         }
       }
     },
+    "elder_passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ">= 65 Years Old"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "65 Yas ve Uzeri"
+          }
+        }
+      }
+    },
     "find_ticket" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -151,17 +228,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bileti Bul"
-          }
-        }
-      }
-    },
-    "Hello, world!" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "tr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hello, world!"
           }
         }
       }
@@ -211,6 +277,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nereden"
+          }
+        }
+      }
+    },
+    "passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passenger"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yolcu"
           }
         }
       }
@@ -313,6 +396,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Bir seyler ters gitti."
+          }
+        }
+      }
+    },
+    "student_passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Student (12- 24 Ages)"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ogrenci (12-24 Yas)"
           }
         }
       }

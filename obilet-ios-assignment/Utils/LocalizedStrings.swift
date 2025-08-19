@@ -87,6 +87,30 @@ struct LocalizedStrings {
         return localizedString(for: "done")
     }
     
+    static var passenger: String {
+        return localizedString(for: "passenger")
+    }
+    
+    static var adult : String {
+        return localizedString(for: "adult")
+    }
+    
+    static var studentPassenger: String {
+        return localizedString(for: "student_passenger")
+    }
+    
+    static var childPassenger: String {
+        return localizedString(for: "child_passenger")
+    }
+    
+    static var babyPassenger: String {
+        return localizedString(for: "baby_passenger")
+    }
+    
+    static var elderlyPassenger: String {
+        return localizedString(for: "elder_passenger")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }
