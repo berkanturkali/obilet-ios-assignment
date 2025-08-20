@@ -5,9 +5,13 @@ import Foundation
 @MainActor
 class FlightSectionSelectPassengerViewModel: ObservableObject {
     
-    @Published var passengerFilters: [PassengerFilterItem] = PassengerFilterItem.getFilterList()
+    @Published var passengerFilters: [PassengerFilterItem] = []
     
     @Published var isIncrementing: Bool = false
+    
+    init() {
+        passengerFilters = PassengerFilterStorage.shared.getPassengerFilters()
+    }
     
     func createAdultListFromFilterList(filterList: [PassengerFilterItem]) -> [PassengerFilterItem] {
         return filterList.filter { item in
@@ -65,5 +69,9 @@ class FlightSectionSelectPassengerViewModel: ObservableObject {
         return filterList
             .filter { $0.filter != .baby }
             .reduce(0) { $0 + $1.count }
+    }
+    
+    func saveFilters() {
+        PassengerFilterStorage.shared.insertOrUpdateFilters(passengerFilters)
     }
 }

@@ -67,7 +67,7 @@ struct FlightSection: View {
             
             FlightDateView(onAddReturnButtonClick: {})
             
-            PassengerSection(onAddPassengerTextClick: {})
+            PassengerSection(selectedFilters: $viewModel.summaryText)
             
             Button(action: {
                 // find the ticket

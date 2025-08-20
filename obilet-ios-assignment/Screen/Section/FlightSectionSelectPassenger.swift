@@ -4,6 +4,8 @@ import SwiftUI
 
 struct FlightSectionSelectPassenger: View {
     
+    @Environment(\.dismiss) private var dismiss
+    
     @StateObject var viewModel = FlightSectionSelectPassengerViewModel()
     
     var body: some View {
@@ -21,6 +23,10 @@ struct FlightSectionSelectPassenger: View {
                     
                     Image(systemName: "xmark.circle")
                         .font(.system(size: 20))
+                        .onTapGesture {
+                            viewModel.saveFilters()
+                            dismiss()
+                        }
                     
                 }
                 .foregroundColor(OBiletColors.onPrimary)
@@ -109,6 +115,7 @@ struct FlightSectionSelectPassenger: View {
                 }
                 
             }
+            .frame(maxHeight: .infinity, alignment: .top)
         }
     }
     

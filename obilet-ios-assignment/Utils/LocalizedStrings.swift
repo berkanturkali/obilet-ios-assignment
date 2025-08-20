@@ -111,6 +111,10 @@ struct LocalizedStrings {
         return localizedString(for: "elder_passenger")
     }
     
+    static var addPassenger: String {
+        return localizedString(for: "add_passenger")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

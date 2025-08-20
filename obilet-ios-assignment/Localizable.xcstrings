@@ -21,11 +21,25 @@
         }
       }
     },
-    "1 Yetiskin" : {
-
-    },
     "18" : {
 
+    },
+    "add_passenger" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Passenger"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yolcu Ekle"
+          }
+        }
+      }
     },
     "add_return_label" : {
       "extractionState" : "manual",
@@ -484,9 +498,6 @@
           }
         }
       }
-    },
-    "Yolcu Ekle" : {
-
     }
   },
   "version" : "1.0"

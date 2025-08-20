@@ -4,7 +4,10 @@ import SwiftUI
 
 struct PassengerSection: View {
     
-    let onAddPassengerTextClick: () -> Void
+    @Binding var selectedFilters: String
+    
+    @State private var isPassengerSheetPresented = false
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -19,33 +22,42 @@ struct PassengerSection: View {
                     Image(systemName: "person.fill")
                         .foregroundColor(OBiletColors.iconPrimary)
                     
-                    Text("1 Yetiskin")
+                    Text(selectedFilters)
                         .foregroundColor(OBiletColors.primaryText)
                         .font(.custom(Nunito.bold, size: 14))
                     
                 }
+                .padding(.horizontal, 12)
                 
                 Spacer()
                 
                 
-                Text("Yolcu Ekle")
+                Text(LocalizedStrings.addPassenger)
                     .font(.custom(Nunito.regular, size: 14))
                     .foregroundColor(OBiletColors.primaryTextWithHalfOpacity)
+                    .padding(.horizontal, 12)
+                    .padding(.vertical)
                     .onTapGesture {
-                        onAddPassengerTextClick()
+                        isPassengerSheetPresented = true
+                    }
+                    .sheet(isPresented: $isPassengerSheetPresented) {
+                        FlightSectionSelectPassenger()
+                            .presentationDetents([.medium, .large])
+                            .presentationDragIndicator(.visible)
                     }
                 
+                
+                
             }
-            .frame(maxWidth: .infinity)
-            .padding(.horizontal, 12)
-            .padding(.vertical)
         }
         .fixedSize(horizontal: false, vertical: true)
         .padding(.horizontal)
-
+        
     }
 }
 
 #Preview {
-    PassengerSection(){}
+    PassengerSection(
+        selectedFilters: .constant("1 Yetiskin")
+    )
 }

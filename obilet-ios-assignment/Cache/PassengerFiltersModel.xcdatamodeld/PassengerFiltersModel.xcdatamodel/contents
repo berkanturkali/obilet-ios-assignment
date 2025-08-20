@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23605" systemVersion="24C101" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="PassengerFilterEntity" representedClassName="PassengerFilterEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="canDecrease" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="canIncrease" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="filter" optional="YES" attributeType="String"/>
+    </entity>
+</model>
