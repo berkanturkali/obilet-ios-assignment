@@ -21,7 +21,19 @@
         }
       }
     },
+    "2+1" : {
+
+    },
+    "7h" : {
+
+    },
+    "10:21" : {
+
+    },
     "18" : {
+
+    },
+    "850.0 T" : {
 
     },
     "add_passenger" : {
@@ -105,6 +117,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otobus Bileti"
+          }
+        }
+      }
+    },
+    "buy_ticket" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buy Ticket"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bilet Al"
           }
         }
       }
@@ -246,6 +275,12 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
+    "Istanbul > Izmir" : {
+
+    },
     "Kasim\nPazartesi" : {
 
     },
@@ -345,6 +380,26 @@
           }
         }
       }
+    },
+    "review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incele"
+          }
+        }
+      }
+    },
+    "Review" : {
+
     },
     "search" : {
       "extractionState" : "manual",
@@ -498,6 +553,9 @@
           }
         }
       }
+    },
+    "Yeni Otoban" : {
+
     }
   },
   "version" : "1.0"

@@ -10,7 +10,7 @@ class JourneyService {
     private init() {}
     
     func getBusJourneys(
-        body: BaseRequestModelDTO<GetBusJourneysRequestModel>
+        body: BaseRequestModelDTO<GetBusJourneysRequestModel?>
     ) async throws -> Resource<[BusLocationDTO]> {
         let url = APIConfig.url(JourneyServiceEndpoints.GET_BUS_JOURNEYS_ENDPOINT)
         
