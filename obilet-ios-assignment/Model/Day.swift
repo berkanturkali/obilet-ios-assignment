@@ -14,7 +14,7 @@ enum Day: CaseIterable {
         case .tomorrow:
             return LocalizedStrings.tomorrow
         case .other:
-            return "Other"
+            return LocalizedStrings.other
         }
     }
 }

@@ -349,6 +349,23 @@
         }
       }
     },
+    "other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diger"
+          }
+        }
+      }
+    },
     "passenger" : {
       "extractionState" : "manual",
       "localizations" : {

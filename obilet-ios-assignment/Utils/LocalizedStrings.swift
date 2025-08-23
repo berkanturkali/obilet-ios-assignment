@@ -131,6 +131,10 @@ struct LocalizedStrings {
         return localizedString(for: "duration_hours_minutes")
     }
     
+    static var other: String {
+        return localizedString(for: "other")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }
