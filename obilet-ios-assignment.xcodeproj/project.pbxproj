@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		EB8046992E58E4BF00EB1B5B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB8046982E58E4BF00EB1B5B /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		EB92A1BA2E2B534100D01F64 /* obilet-ios-assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "obilet-ios-assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8046992E58E4BF00EB1B5B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "obilet-ios-assignment";
 			packageProductDependencies = (
+				EB8046982E58E4BF00EB1B5B /* Kingfisher */,
 			);
 			productName = "obilet-ios-assignment";
 			productReference = EB92A1BA2E2B534100D01F64 /* obilet-ios-assignment.app */;
@@ -108,6 +114,9 @@
 			);
 			mainGroup = EB92A1B12E2B534000D01F64;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				EB8046972E58E4BF00EB1B5B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB92A1BB2E2B534100D01F64 /* Products */;
 			projectDirPath = "";
@@ -145,6 +154,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BASE_URL = "https://v2-api.obilet.com/api/";
+				BUS_FIRM_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -178,6 +188,7 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				FEATURE_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/feature/";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -210,6 +221,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				BASE_URL = "https://v2-api.obilet.com/api/";
+				BUS_FIRM_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -243,6 +255,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				FEATURE_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/feature/";
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -267,6 +280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUS_FIRM_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"obilet-ios-assignment/Preview Content\"";
@@ -298,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUS_FIRM_IMAGE_BASE_URL = "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"obilet-ios-assignment/Preview Content\"";
@@ -346,6 +361,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EB8046972E58E4BF00EB1B5B /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EB8046982E58E4BF00EB1B5B /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB8046972E58E4BF00EB1B5B /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = EB92A1B22E2B534000D01F64 /* Project object */;
 }

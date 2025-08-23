@@ -3,6 +3,9 @@
 import SwiftUI
 
 struct BusType: View {
+    
+    let type: String?
+    
     var body: some View {
         HStack {
             
@@ -12,7 +15,7 @@ struct BusType: View {
                 .frame(width: 24, height: 24)
                 .foregroundColor(OBiletColors.iconPrimary)
             
-            Text("2+1")
+            Text(type ?? "")
                 .font(.custom(Nunito.bold, size: 12))
                 .foregroundColor(OBiletColors.primaryText)
         }
@@ -21,5 +24,7 @@ struct BusType: View {
 }
 
 #Preview {
-    BusType()
+    BusType(
+        type: "2+1"
+    )
 }

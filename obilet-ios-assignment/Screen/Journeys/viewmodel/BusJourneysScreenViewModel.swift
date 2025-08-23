@@ -10,7 +10,7 @@ class BusJourneysScreenViewModel: ObservableObject {
     
     @Published var isLoading: Bool = false
     
-    @Published var journeys: [BusLocationDTO] = []
+    @Published var journeys: [BusJourneyResponseModel] = []
     
     @Published var errorMessage: String? = nil
     
@@ -45,7 +45,7 @@ class BusJourneysScreenViewModel: ObservableObject {
             let resource = try await journeyService.getBusJourneys(body: requestModel)
             
             if resource is Resource.Success {
-                journeys = resource.data ?? []
+               journeys = resource.data ?? []
             } else if resource is Resource.Error {
                 errorMessage = networkManager.handleNetworkError(resource.error!)
                 print("error message = \(String(describing: errorMessage))")

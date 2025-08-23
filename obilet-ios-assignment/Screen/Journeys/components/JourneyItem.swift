@@ -4,7 +4,10 @@ import SwiftUI
 
 struct JourneyItem: View {
     
+    let journey: BusJourneyResponseModel
+    
     @State var busStopsExpanded = false
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
@@ -14,11 +17,23 @@ struct JourneyItem: View {
                 
                 HStack {
                     
-                    BusFirmLogo()
+                    BusFirmLogo(
+                        url: APIConfig.busFirmImageBaseURL.absoluteString + "\(String(describing: journey.partnerId))" + "-sm.png"
+                    )
                     
-                    JourneyTime()
+                    JourneyTime(
+                        time: journey.journey?.departure ?? ""
+                    )
                     
-                    JourneyPrice()
+                    JourneyPrice(
+                        price: journey.journey?
+                            .formatThePrice(
+                                price: String(
+                                    describing: journey.journey?.originalPrice
+                                ),
+                                currencyCode: journey.journey?.currency
+                            )
+                    )
                     
                 }
                 .frame(maxWidth: .infinity)
@@ -26,9 +41,16 @@ struct JourneyItem: View {
                 
                 HStack {
                     
-                    BusType()
+                    BusType(
+                        type: journey.busType
+                    )
                     
-                    Duration()
+                    Duration(
+                        duration: journey.journey?
+                            .formatDurationForDisplay(
+                                journey.journey?.duration
+                            )
+                    )
                     
                     Spacer()
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -36,12 +58,16 @@ struct JourneyItem: View {
                 }
                 .padding(.horizontal)
                 
-                OriginAndTarget()
+                OriginAndTarget(
+                    originAndTarget: "\(journey.journey?.origin ?? "") > \(journey.journey?.destination ?? "")"
+                )
                 
                 Divider()
                 
                 //features
-                Features()
+                if let features = journey.features, !features.isEmpty {
+                    Features(features: features)
+                }
                 
                 if !busStopsExpanded {
                     Divider()
@@ -76,7 +102,7 @@ struct JourneyItem: View {
                             .foregroundColor(OBiletColors.iconPrimary)
                             .rotationEffect(.degrees(busStopsExpanded ? 180 : 0))
                         
-                        Text("Review")
+                        Text(LocalizedStrings.review)
                             .font(.custom(Nunito.extraBold, size: 10))
                             .foregroundColor(OBiletColors.primaryText)
                     }
@@ -86,7 +112,7 @@ struct JourneyItem: View {
                         withAnimation {
                             busStopsExpanded.toggle()
                         }
-             
+                        
                     }
                 }
                 .padding(.vertical)
@@ -101,22 +127,24 @@ struct JourneyItem: View {
 
 struct ExpandableStopList: View {
     let visible: Bool
-    let stops: [Stop]
+    let stops: [StopDTO]
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-                 if visible {
-                     JourneyStopView(stopList: stops)
-                         .transition(.asymmetric(
-                             insertion: .move(edge: .top).combined(with: .opacity),
-                             removal:  .move(edge: .top).combined(with: .opacity)
-                         ))
-                 }
-             }
-             .animation(.easeInOut(duration: 0.10), value: visible)
+            if visible {
+                JourneyStopView(stopList: stops)
+                    .transition(.asymmetric(
+                        insertion: .move(edge: .top).combined(with: .opacity),
+                        removal:  .move(edge: .top).combined(with: .opacity)
+                    ))
+            }
+        }
+        .animation(.easeInOut(duration: 0.10), value: visible)
     }
 }
 
-#Preview {
-    JourneyItem()
-}
+//#Preview {
+//    JourneyItem(
+//
+//    )
+//}

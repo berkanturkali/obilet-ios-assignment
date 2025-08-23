@@ -4,7 +4,7 @@ import SwiftUI
 
 struct JourneyStopView: View {
     
-    let stopList: [Stop]
+    let stopList: [StopDTO]
     
     var body: some View {
         ScrollView {

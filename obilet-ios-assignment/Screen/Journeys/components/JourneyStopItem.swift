@@ -4,7 +4,7 @@ import SwiftUI
 
 struct JourneyStopItem: View {
     
-    let stop: Stop
+    let stop: StopDTO
     let firstItem: Bool
     let lastItem: Bool
     let lineColor: Color = Color(red: 0.9, green: 0.1, blue: 0.1)
@@ -66,8 +66,8 @@ struct JourneyStopItem: View {
                 name: "Istanbul, Main Station",
                 time: "11:02",
                 isOrigin: true,
-                isTarget: false
-    
+                isDestination: false,
+                isSegmentStop: false    
             ),
             firstItem: true,
             lastItem: false
@@ -78,7 +78,7 @@ struct JourneyStopItem: View {
                 name: "Istanbul, Main Station",
                 time: "11:02",
                 isOrigin: true,
-                isTarget: false
+                isDestination: false
     
             ),
             firstItem: false,
@@ -91,7 +91,7 @@ struct JourneyStopItem: View {
                 name: "Istanbul, Main Station",
                 time: "11:02",
                 isOrigin: true,
-                isTarget: false
+                isDestination: false
     
             ),
             firstItem: false,

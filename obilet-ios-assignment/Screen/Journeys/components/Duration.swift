@@ -3,6 +3,9 @@
 import SwiftUI
 
 struct Duration: View {
+    
+    let duration: String?
+    
     var body: some View {
         HStack(spacing: 4) {
             
@@ -12,7 +15,7 @@ struct Duration: View {
                 .foregroundColor(OBiletColors.iconPrimary)
             
             
-            Text("7h")
+            Text(duration ?? "")
                 .font(.custom(Nunito.extraBold, size: 12))
                 .foregroundColor(OBiletColors.primaryText)
             
@@ -22,5 +25,7 @@ struct Duration: View {
 }
 
 #Preview {
-    Duration()
+    Duration(
+        duration: "7h"
+    )
 }

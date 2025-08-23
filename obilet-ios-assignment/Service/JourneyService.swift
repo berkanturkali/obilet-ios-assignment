@@ -11,15 +11,15 @@ class JourneyService {
     
     func getBusJourneys(
         body: BaseRequestModelDTO<GetBusJourneysRequestModel?>
-    ) async throws -> Resource<[BusLocationDTO]> {
+    ) async throws -> Resource<[BusJourneyResponseModel]> {
         let url = APIConfig.url(JourneyServiceEndpoints.GET_BUS_JOURNEYS_ENDPOINT)
         
         do {
-            let response: Resource<[BusLocationDTO]> = try await networkManager.request(
+            let response: Resource<[BusJourneyResponseModel]> = try await networkManager.request(
                 to: url,
                 method: HttpMethod.POST,
                 body: body,
-                responseType: BaseResponseDTO<[BusLocationDTO]>.self
+                responseType: BaseResponseDTO<[BusJourneyResponseModel]>.self
             )
             
             return response

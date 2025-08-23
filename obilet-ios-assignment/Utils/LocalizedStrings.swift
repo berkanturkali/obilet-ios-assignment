@@ -119,6 +119,18 @@ struct LocalizedStrings {
         return localizedString(for: "buy_ticket")
     }
     
+    static var review: String {
+        return localizedString(for: "review")
+    }
+    
+    static var durationHoursOnly : String {
+        return localizedString(for: "duration_hours_only")
+    }
+    
+    static var durationHoursAndMinutes: String {
+        return localizedString(for: "duration_hours_minutes")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

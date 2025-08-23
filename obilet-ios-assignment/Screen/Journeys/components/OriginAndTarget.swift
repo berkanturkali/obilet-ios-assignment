@@ -3,8 +3,11 @@
 import SwiftUI
 
 struct OriginAndTarget: View {
+    
+    let originAndTarget: String?
+    
     var body: some View {
-        Text("Istanbul > Izmir")
+        Text(originAndTarget ?? "")
             .font(.custom(Nunito.bold, size: 12))
             .foregroundColor(OBiletColors.primaryText)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -14,5 +17,7 @@ struct OriginAndTarget: View {
 }
 
 #Preview {
-    OriginAndTarget()
+    OriginAndTarget(
+        originAndTarget: "Izmir > Izmir"
+    )
 }

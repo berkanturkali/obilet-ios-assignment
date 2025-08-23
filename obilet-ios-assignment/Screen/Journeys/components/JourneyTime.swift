@@ -3,7 +3,10 @@
 import SwiftUI
 
 struct JourneyTime: View {
-    var body: some View {        
+    
+    let time: String
+    
+    var body: some View {
         Text("10:21")
             .font(.custom(Nunito.bold, size: 12))
             .foregroundColor(OBiletColors.primaryText)
@@ -12,5 +15,7 @@ struct JourneyTime: View {
 }
 
 #Preview {
-    JourneyTime()
+    JourneyTime(
+        time: "11:02"
+    )
 }

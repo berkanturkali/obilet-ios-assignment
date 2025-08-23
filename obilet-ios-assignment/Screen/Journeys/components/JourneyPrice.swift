@@ -3,8 +3,11 @@
 import SwiftUI
 
 struct JourneyPrice: View {
+    
+    let price: String?
+    
     var body: some View {
-        Text("850.0 T")
+        Text(price ?? "")
             .font(.custom(Nunito.extraBold, size: 14))
             .foregroundColor(OBiletColors.primaryText)
             .frame(maxWidth: .infinity, alignment: .trailing)
@@ -12,5 +15,7 @@ struct JourneyPrice: View {
 }
 
 #Preview {
-    JourneyPrice()
+    JourneyPrice(
+        price: "850 T"
+    )
 }
