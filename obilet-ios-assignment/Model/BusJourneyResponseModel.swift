@@ -44,12 +44,12 @@ struct FeatureDTO: Codable, Identifiable {
     let name: String?
     
     var  imageURL: String {
-        APIConfig.featureImageBaseURL.absoluteString + "\(String(describing: self.id ?? 0)).svg"
+        APIConfig.featureImageBaseURL.absoluteString + "\(self.id ?? 0).svg"
     }
     
     static var mockList: [FeatureDTO] {
         [
-            .init(id: 1, name: "Feature1"),
+            .init(id: 7, name: "Feature1"),
             .init(id: 2, name: "Feature2"),
             .init(id: 3, name: "Feature3"),
             .init(id: 4, name: "Feature4")
@@ -86,8 +86,8 @@ struct JourneyDTO: Codable {
         case busName = "bus-name"
     }
     
-    func formatThePrice(price: String?, currencyCode: String?) -> String? {
-        guard let price = price else { return nil }
+    func formatThePrice(price: String?, currencyCode: String?) -> String {
+        guard let price = price else { return "0" }
         
         if let code = currencyCode, let currency = Currency(rawValue: code) {
             return price + currency.symbol
@@ -98,8 +98,7 @@ struct JourneyDTO: Codable {
     
     func formatDurationForDisplay(_ time: String?) -> String? {
         guard let time = time else { return nil }
-
-        // Expect "HH:mm" (e.g., "05:00", "07:45"). Adjust if your backend differs.
+        
         let parts = time.split(separator: ":")
         guard parts.count >= 2,
               let hours = Int(parts[0]),
@@ -109,6 +108,25 @@ struct JourneyDTO: Codable {
             return String(format: LocalizedStrings.durationHoursOnly, hours)
         } else {
             return String(format: LocalizedStrings.durationHoursAndMinutes, hours, minutes)
+        }
+    }
+    
+    func formatDepartureTime(_ departureDateTime: String?) -> String? {
+        guard let departureDateTime = departureDateTime else { return nil }
+
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        inputFormatter.locale = Locale.current
+
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "HH:mm"
+        outputFormatter.locale = Locale.current
+
+        if let date = inputFormatter.date(from: departureDateTime) {
+            return outputFormatter.string(from: date)
+        } else {
+            print("⚠️ Could not parse date: \(departureDateTime)")
+            return nil
         }
     }
 }
@@ -132,6 +150,24 @@ struct StopDTO: Codable {
         case isOrigin = "is-origin"
         case isDestination = "is-destination"
         case isSegmentStop = "is-segment-stop"
+    }
+    
+    func mapResponseDateTimeToTimeFormat(responseDateTime: String?) -> String? {
+        guard let responseDateTime = responseDateTime else { return nil }
+        
+        let inputFormatter = DateFormatter()
+        inputFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        inputFormatter.locale = Locale.current
+        
+        let outputFormatter = DateFormatter()
+        outputFormatter.dateFormat = "HH:mm"
+        outputFormatter.locale = Locale.current
+        
+        if let date = inputFormatter.date(from: responseDateTime) {
+            return outputFormatter.string(from: date)
+        } else {
+            return nil
+        }
     }
 }
 

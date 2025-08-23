@@ -107,7 +107,7 @@ struct TopBar: View {
                     
                     Image(systemName: "chevron.left")
                         .foregroundColor(OBiletColors.onPrimary)
-                        .padding(10)
+                        .padding(8)
                         .background(
                             Circle().fill(Color.white.opacity(0.44))
                         )

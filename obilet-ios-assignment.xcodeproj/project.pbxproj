@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		EB8046992E58E4BF00EB1B5B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EB8046982E58E4BF00EB1B5B /* Kingfisher */; };
+		EB8046AA2E5A5F8100EB1B5B /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = EB8046A92E5A5F8100EB1B5B /* SDWebImageSwiftUI */; };
+		EB8046AD2E5A5F9700EB1B5B /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = EB8046AC2E5A5F9700EB1B5B /* SDWebImageSVGCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8046AD2E5A5F9700EB1B5B /* SDWebImageSVGCoder in Frameworks */,
+				EB8046AA2E5A5F8100EB1B5B /* SDWebImageSwiftUI in Frameworks */,
 				EB8046992E58E4BF00EB1B5B /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,6 +88,8 @@
 			name = "obilet-ios-assignment";
 			packageProductDependencies = (
 				EB8046982E58E4BF00EB1B5B /* Kingfisher */,
+				EB8046A92E5A5F8100EB1B5B /* SDWebImageSwiftUI */,
+				EB8046AC2E5A5F9700EB1B5B /* SDWebImageSVGCoder */,
 			);
 			productName = "obilet-ios-assignment";
 			productReference = EB92A1BA2E2B534100D01F64 /* obilet-ios-assignment.app */;
@@ -116,6 +122,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				EB8046972E58E4BF00EB1B5B /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				EB8046A82E5A5F8100EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				EB8046AB2E5A5F9700EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EB92A1BB2E2B534100D01F64 /* Products */;
@@ -204,6 +212,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				JOURNEYS_BASE_URL = "https://www.obilet.com/seferler/";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -265,6 +274,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				JOURNEYS_BASE_URL = "https://www.obilet.com/seferler/";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -371,6 +381,22 @@
 				minimumVersion = 8.5.0;
 			};
 		};
+		EB8046A82E5A5F8100EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.3;
+			};
+		};
+		EB8046AB2E5A5F9700EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -378,6 +404,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EB8046972E58E4BF00EB1B5B /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		EB8046A92E5A5F8100EB1B5B /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB8046A82E5A5F8100EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		EB8046AC2E5A5F9700EB1B5B /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EB8046AB2E5A5F9700EB1B5B /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

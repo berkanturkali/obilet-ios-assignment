@@ -30,6 +30,7 @@ struct BusFirmLogo: View {
                     }
                     .resizable()
                     .scaledToFill()
+                    .aspectRatio(contentMode: .fit)
                     .transition(.opacity)
             }
         }
@@ -41,6 +42,6 @@ struct BusFirmLogo: View {
 
 #Preview {
     BusFirmLogo(
-        url: nil
+        url: "https://s3.eu-central-1.amazonaws.com/static.obilet.com/images/partner/3557-sm.png"
     )
 }

@@ -22,7 +22,7 @@ struct SearchScreenShimmer: View {
                             .shimmer()
                     }
                 }
-                .frame(height: 130)
+                .frame(height: 120)
                 .ignoresSafeArea()
                 
                 VStack(spacing: 16) {
@@ -70,10 +70,9 @@ struct SearchScreenShimmer: View {
                         .shimmer()
                     }
                 }
-                
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.horizontal)
-                .padding(.top)
+                .padding(.top, 48)
             }
             
             

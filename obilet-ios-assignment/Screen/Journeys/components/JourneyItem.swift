@@ -4,6 +4,8 @@ import SwiftUI
 
 struct JourneyItem: View {
     
+    let departureDate: String
+    
     let journey: BusJourneyResponseModel
     
     @State var busStopsExpanded = false
@@ -12,27 +14,23 @@ struct JourneyItem: View {
         ZStack {
             RoundedRectangle(cornerRadius: 12)
                 .fill(OBiletColors.background)
-            
+                .shadow(radius: 2)
             VStack {
                 
                 HStack {
-                    
                     BusFirmLogo(
-                        url: APIConfig.busFirmImageBaseURL.absoluteString + "\(String(describing: journey.partnerId))" + "-sm.png"
+                        url: APIConfig.busFirmImageBaseURL.absoluteString + "\(journey.partnerId ?? 0)" + "-sm.png"
                     )
                     
                     JourneyTime(
-                        time: journey.journey?.departure ?? ""
+                        time: journey.journey?.formatDepartureTime(journey.journey?.departure) ?? ""
                     )
                     
                     JourneyPrice(
-                        price: journey.journey?
-                            .formatThePrice(
-                                price: String(
-                                    describing: journey.journey?.originalPrice
-                                ),
-                                currencyCode: journey.journey?.currency
-                            )
+                        price: journey.journey?.formatThePrice(
+                            price: String(format: "%.2f", journey.journey?.originalPrice ?? 0),
+                            currencyCode: journey.journey?.currency
+                        ) ?? "0"
                     )
                     
                 }
@@ -71,28 +69,36 @@ struct JourneyItem: View {
                 
                 if !busStopsExpanded {
                     Divider()
+                } else {
+                    //Stop List
+                    ExpandableStopList(
+                        visible: busStopsExpanded,
+                        stops: journey.journey?.stops ?? []
+                    )
                 }
                 
-                //Stop List
-                ExpandableStopList(visible: busStopsExpanded, stops: [])
-                
+                //review section
                 ZStack {
                     
-                    Button(action: {
-                        //buy ticket
-                    }) {
-                        Text(LocalizedStrings.buyTicket)
-                            .foregroundColor(.white)
-                            .font(.custom(Nunito.bold, size: 10))
-                            .padding(.horizontal, 24)
-                            .padding(.vertical, 6)
-                            .background(
-                                RoundedRectangle(cornerRadius: 32)
-                                    .fill(OBiletColors.button)
+                    Button(
+                        action: {
+                            createRedirectionUrlThenNavigate(
+                                journey: journey,
+                                departureDate: departureDate
                             )
-                    }
-                    .fixedSize(horizontal: true, vertical: true)
-                    .frame(maxWidth: .infinity, alignment: .center)
+                        }) {
+                            Text(LocalizedStrings.buyTicket)
+                                .foregroundColor(.white)
+                                .font(.custom(Nunito.bold, size: 10))
+                                .padding(.horizontal, 24)
+                                .padding(.vertical, 6)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 32)
+                                        .fill(OBiletColors.button)
+                                )
+                        }
+                        .fixedSize(horizontal: true, vertical: true)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     
                     HStack {
                         Image(systemName: "chevron.down")
@@ -116,12 +122,25 @@ struct JourneyItem: View {
                     }
                 }
                 .padding(.vertical)
-                
             }
             
         }
         .fixedSize(horizontal: false, vertical: true)
-        .padding()
+        .padding(.horizontal)
+        
+    }
+    
+    func createRedirectionUrlThenNavigate(journey: BusJourneyResponseModel, departureDate: String) {
+        let baseUrl = APIConfig.journeysBaseURL
+        let urlString = "\(baseUrl)\(journey.originLocationId ?? 0)-\(journey.destinationLocationId ?? 0)/\(departureDate)/\(journey.id ?? 0)"
+        
+        if let url = URL(string: urlString) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        } else {
+            print("❌ Invalid URL: \(urlString)")
+        }
     }
 }
 
@@ -142,9 +161,3 @@ struct ExpandableStopList: View {
         .animation(.easeInOut(duration: 0.10), value: visible)
     }
 }
-
-//#Preview {
-//    JourneyItem(
-//
-//    )
-//}

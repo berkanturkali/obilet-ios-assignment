@@ -20,9 +20,15 @@ struct APIConfig {
         return url
     }()
     
-    static let featureImageBaseURL : URL = {
+    static let featureImageBaseURL: URL = {
         let s = Bundle.main.object(forInfoDictionaryKey: "FeatureImageBaseURL") as? String ?? ""
         guard let url = URL(string: s) else { fatalError("Invalid FeatureImageBaseURL \(s)")}
+        return url
+    }()
+    
+    static let journeysBaseURL: URL = {
+        let s = Bundle.main.object(forInfoDictionaryKey: "JourneysBaseURL") as? String ?? ""
+        guard let url = URL(string: s) else { fatalError("Invalid JourneysBaseURL \(s)")}
         return url
     }()
     

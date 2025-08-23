@@ -1,7 +1,7 @@
 //
 
 import SwiftUI
-import Kingfisher
+import SDWebImageSwiftUI
 
 struct Features: View {
     
@@ -18,6 +18,7 @@ struct Features: View {
             .padding(.horizontal)
             .padding(.vertical, 4)
         }
+        .scrollIndicators(.hidden)
     }
 }
 
@@ -43,16 +44,16 @@ struct FeatureItem: View {
             )
             
             HStack(spacing: 16) {
-                if let url = URL(string: feature.imageURL), feature.id != nil, !failed {
-                    KFImage(url)
-                        .placeholder { ProgressView() }
-                        .onFailure({ _ in
+                if let url = URL(string: feature.imageURL), !failed {
+                    WebImage(url: url)
+                        .onFailure { error in
                             failed = true
-                        })
+                            print("SVG load failed:", error.localizedDescription)
+                        }
                         .resizable()
-                        .scaledToFill()
+                        .indicator(.activity)
+                        .scaledToFit()
                         .frame(width: 16, height: 16)
-                        .clipped()
                 } else {
                     Image(systemName: "photo")
                         .resizable()

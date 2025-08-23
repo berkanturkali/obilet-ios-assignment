@@ -14,7 +14,7 @@ class BusJourneysScreenViewModel: ObservableObject {
     
     @Published var errorMessage: String? = nil
     
-    private var args: BusJourneysArgs
+    var args: BusJourneysArgs
     
     private let journeyService: JourneyService = .shared
     
@@ -37,6 +37,7 @@ class BusJourneysScreenViewModel: ObservableObject {
     
     func getBusJourneys(_ body: GetBusJourneysRequestModel) async {
         guard !isLoading else { return }
+        print("request body = \(body)")
         
         do {
             isLoading = true
@@ -48,7 +49,7 @@ class BusJourneysScreenViewModel: ObservableObject {
                journeys = resource.data ?? []
             } else if resource is Resource.Error {
                 errorMessage = networkManager.handleNetworkError(resource.error!)
-                print("error message = \(String(describing: errorMessage))")
+                print("error message while fetching bus journeys = \(String(describing: errorMessage))")
             }
             
         } catch {

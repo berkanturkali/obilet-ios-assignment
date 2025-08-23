@@ -9,7 +9,7 @@ struct JourneyStopItem: View {
     let lastItem: Bool
     let lineColor: Color = Color(red: 0.9, green: 0.1, blue: 0.1)
     var body: some View {
-        HStack(alignment: .center, spacing: 12) {
+        HStack(alignment: .center, spacing: 16) {
             
             ZStack {
                 GeometryReader { geo in
@@ -31,29 +31,28 @@ struct JourneyStopItem: View {
                     .stroke(lineColor, style: StrokeStyle(lineWidth: 2, lineCap: .round))
                 }
                 
-                Circle()
-                    .fill(lineColor)
-                    .frame(width: 36, height: 36)
-                    .overlay(
-                        Text(stop.time ?? "")
-                            .padding(.horizontal, 4)
-                            .font(.system(size: 10, weight: .semibold))
-                            .foregroundColor(.white)
-                            .minimumScaleFactor(0.5)
-                   
+                Text(stop.mapResponseDateTimeToTimeFormat(responseDateTime: stop.time) ?? "")
+                    .padding(10)
+                    .font(.custom(Nunito.semiBold, size: 6))
+                    .foregroundColor(.white)
+                    .background(
+                        Circle().fill(lineColor)
                     )
+                    .fixedSize()
             }
             .frame(width: 22)
             
             
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: 12) {
                 Text(stop.name!)
-                    .font(.system(size: 14, weight: .semibold))
+                    .font(.custom(Nunito.semiBold, size: 12))
                     .foregroundColor(.primary)
                 
             }
             .padding(.vertical, 10)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal)
         
     }
 }
@@ -67,7 +66,7 @@ struct JourneyStopItem: View {
                 time: "11:02",
                 isOrigin: true,
                 isDestination: false,
-                isSegmentStop: false    
+                isSegmentStop: false
             ),
             firstItem: true,
             lastItem: false

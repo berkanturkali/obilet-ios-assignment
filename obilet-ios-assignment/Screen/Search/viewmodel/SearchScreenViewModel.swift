@@ -59,7 +59,6 @@ class SearchScreenViewModel: ObservableObject {
     }
     
     func setOriginAndTargetDestionation(_ originAndTargetDestination: OriginAndTargetDestionation) {
-        print("here")
         self.originAndTargetDestination = originAndTargetDestination
     }
     

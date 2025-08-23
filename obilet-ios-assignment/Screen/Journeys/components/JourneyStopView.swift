@@ -21,7 +21,7 @@ struct JourneyStopView: View {
                 }
             }
         }
-        .frame(height: 100)                // .height(100.dp)
+        .frame(height: 100)
         .frame(maxWidth: .infinity)
     }
 }

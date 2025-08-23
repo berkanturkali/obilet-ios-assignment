@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct BusJourneysArgs {
+struct BusJourneysArgs: Hashable {
     let originId: Int
     let destinationId: Int
     let departureDate: String

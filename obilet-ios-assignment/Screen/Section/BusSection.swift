@@ -10,13 +10,34 @@ struct BusSection: View {
     
     @ObservedObject var viewModel: BusSectionViewModel
     
+    @State private var navArgs: BusJourneysArgs? = nil
+    
+    let DEPARTURE_DATE_PATTERN = "yyyy-MM-dd"
+    
     var body: some View {
         NavigationStack {
             ZStack {
                 OBiletColors.background
                     .ignoresSafeArea()
                 
-                busSectionContent(locations: locations)
+                busSectionContent(locations: locations) {
+                    let origin = viewModel.selectedOriginAndTargetDestination?.origin
+                    let destination = viewModel.selectedOriginAndTargetDestination?.target
+                    let originId = origin?.id
+                    let destinationId = destination?.id
+                    
+                    let departureDate = FormatDateWithTheGivenPatternUseCase.callAsFunction(date: viewModel.selectedDate, pattern: DEPARTURE_DATE_PATTERN)
+                    
+                    if let origin, let destination, let originId, let destinationId  {
+                        navArgs = BusJourneysArgs(
+                            originId: originId,
+                            destinationId: destinationId,
+                            departureDate: departureDate,
+                            originName: origin.name!,
+                            destinationName: destination.name!
+                        )
+                    }
+                }
                 
             }
         }
@@ -29,12 +50,18 @@ struct BusSection: View {
             print("new value is \(String(describing: newValue))")
             viewModel.selectedOriginAndTargetDestination = newValue
         }
+        .navigationDestination(item: $navArgs) { args in
+            BusJourneysScreen(args: args)
+        }
     }
     
     
-    private func busSectionContent(locations: [BusLocationDTO]) -> some View {
+    private func busSectionContent(
+        locations: [BusLocationDTO],
+        onFindButtonClick: @escaping () -> Void
+    ) -> some View {
+        
         VStack {
-            
             LocationsCardView(
                 origin: Binding(
                     get: {
@@ -72,9 +99,7 @@ struct BusSection: View {
                 displayDate: $viewModel.displayDate
             )
             
-            Button(action: {
-                // find the ticket
-            }) {
+            Button(action: onFindButtonClick) {
                 Text(LocalizedStrings.findTheTicket)
                     .foregroundColor(.white)
                     .font(.custom(Nunito.bold, size: 16))

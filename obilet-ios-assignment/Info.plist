@@ -10,6 +10,8 @@
 	<string>$(FEATURE_IMAGE_BASE_URL)</string>
 	<key>OutboundIpURL</key>
 	<string>$(OUTBOUND_IP_URL)</string>
+	<key>JourneysBaseURL</key>
+	<string>$(JOURNEYS_BASE_URL)</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Nunito-Black.ttf</string>
