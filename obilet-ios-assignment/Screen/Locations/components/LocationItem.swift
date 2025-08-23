@@ -33,7 +33,7 @@ struct LocationItem: View {
                     
                     Text(locationName)
                         .foregroundColor(OBiletColors.primary)
-                        .font(.custom(Nunito.bold, size: 18))
+                        .font(.custom(Nunito.bold, size: 14))
                 }
                 
                 Spacer()

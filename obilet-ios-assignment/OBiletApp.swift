@@ -5,7 +5,7 @@ import SDWebImageSVGCoder
 import SDWebImage
 
 @main
-struct obilet_ios_assignmentApp: App {
+struct OBiletApp: App {
     
     init() {
         let svg = SDImageSVGCoder.shared
