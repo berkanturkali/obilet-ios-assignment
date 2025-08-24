@@ -8,6 +8,12 @@ class FlightSectionViewModel: NSObject, ObservableObject, @preconcurrency NSFetc
     
     @Published var summaryText: String = ""
     
+    @Published var departuraDate: Date = Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+    
+    @Published var returnDate: Date? = nil
+    
+    @Published var flightDateType: FlightDateType = .departure
+    
     @Published
     var selectedOriginAndTargetDestination: OriginAndTargetDestionation? = OriginAndTargetDestionation()
     
@@ -62,5 +68,19 @@ class FlightSectionViewModel: NSObject, ObservableObject, @preconcurrency NSFetc
         guard var selected = selectedOriginAndTargetDestination else { return }
         swap(&selected.origin, &selected.target)
         selectedOriginAndTargetDestination = selected
+    }
+    
+    func formatDepartureOrReturnDate(date: Date) -> FlightDate {
+        let dateDelimiter = " "
+        let formattedDate = FormatDateWithTheGivenPatternUseCase.callAsFunction(date: date)
+        let dateAsList = formattedDate.split(separator: dateDelimiter)
+        let day = dateAsList.first!
+        let month = dateAsList[1]
+        let dayOfTheWeek = dateAsList.last!
+        return FlightDate(
+            day: "\(day)",
+            month: "\(month)",
+            dayOfWeek: "\(dayOfTheWeek)"
+        )
     }
 }

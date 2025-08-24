@@ -135,6 +135,14 @@ struct LocalizedStrings {
         return localizedString(for: "other")
     }
     
+    static var selectDepartureDate: String {
+        return localizedString(for: "select_departure_date")
+    }
+    
+    static var selectReturnDate: String {
+        return localizedString(for: "select_return_date")
+    }
+    
     static func localizedString(for key: String) -> String {
         return NSLocalizedString(key, comment: "")
     }

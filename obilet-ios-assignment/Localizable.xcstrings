@@ -4,6 +4,16 @@
     "-" : {
 
     },
+    "%@\n%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@\n%2$@"
+          }
+        }
+      }
+    },
     "%lld" : {
 
     },
@@ -20,9 +30,6 @@
           }
         }
       }
-    },
-    "18" : {
-
     },
     "add_passenger" : {
       "extractionState" : "manual",
@@ -300,9 +307,6 @@
     "Hello, World!" : {
 
     },
-    "Kasim\nPazartesi" : {
-
-    },
     "lorem_dummy" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -481,6 +485,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tarih Secin"
+          }
+        }
+      }
+    },
+    "select_departure_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Departure Date"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gidis Tarihi Secin"
+          }
+        }
+      }
+    },
+    "select_return_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select Return Date"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Donus Tarihi Secin"
           }
         }
       }
